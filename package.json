@@ -1,10 +1,10 @@
 {
-  "name": "acav-we-sample-server",
+  "name": "acav-we-server-example",
   "version": "1.0.0",
   "author": "aleab (https://github.com/aleab)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aleab/acav-we-sample-server.git"
+    "url": "git+https://github.com/aleab/acav-we-server-example.git"
   },
   "license": "MIT",
   "private": true,

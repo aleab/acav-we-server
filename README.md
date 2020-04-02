@@ -1,11 +1,11 @@
-# acav-we-sample-server
+# acav-we-server-example
 > Sample server code for [aCAV-WE](https://github.com/aleab/acav-we).
 
 ## Instructions
 1. Clone this repository and install the project's dependencies.
    ```
-   git clone https://github.com/aleab/acav-we-sample-server
-   cd acav-we-sample-server
+   git clone https://github.com/aleab/acav-we-server-example
+   cd acav-we-server-example
    npm install
    ```
 2. Login to your [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/) and create a new app; then edit its settings and add a redirect URI, e.g. `http://localhost:4000/`.
