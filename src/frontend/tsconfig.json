@@ -1,0 +1,12 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "target": "ES2018",
+        "moduleResolution": "Node",
+        "module": "CommonJS",
+        "esModuleInterop": true,
+        "lib": ["ES2018", "DOM"],
+        "jsx": "preserve"
+    },
+    "include": ["**/*.ts", "**/*.tsx"],
+}

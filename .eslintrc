@@ -1,0 +1,47 @@
+{
+    "root": true,
+    "extends": ["airbnb-base"],
+    "plugins": ["@typescript-eslint"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "rules": {
+        "@typescript-eslint/semi": ["error"],
+        "@typescript-eslint/type-annotation-spacing": "warn",
+        "array-bracket-spacing": ["error", "always", { "singleValue": false }],
+        "arrow-body-style": "off",
+        "arrow-parens": ["error", "as-needed"],
+        "class-methods-use-this": "off",
+        "dot-notation": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off",
+        "indent": "off",
+        "linebreak-style": "off",
+        "lines-between-class-members": "off",
+        "max-len": "off",
+        "no-cond-assign": "off",
+        "no-console": "off",
+        "no-multi-spaces": "off",
+        "no-nested-ternary": "off",
+        "no-plusplus": "off",
+        "no-underscore-dangle": "off",
+        "no-unreachable": "warn",
+        "no-unused-expressions": "off",
+        "no-unused-labels": "off",
+        "no-unused-vars": "off",
+        "object-curly-newline": "off",
+        "object-curly-spacing": ["error", "always"],
+        "operator-linebreak": "off",
+        "prefer-destructuring": "off",
+        "prefer-template": "off",
+        "semi": "off",
+        "sort-imports": ["error", { "ignoreDeclarationSort": true }],
+        "spaced-comment": "off"
+    }
+}

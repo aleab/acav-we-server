@@ -1,0 +1,22 @@
+{
+    "extends": ["../../.eslintrc", "plugin:react/recommended"],
+    "plugins": ["@typescript-eslint", "react"],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "jsx": true
+    },
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "react/jsx-indent": [
+            "error",
+            2,
+            {
+                "checkAttributes": true,
+                "indentLogicalExpressions": true
+            }
+        ],
+        "react/react-in-jsx-scope": "off"
+    }
+}
