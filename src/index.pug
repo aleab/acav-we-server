@@ -1,0 +1,15 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title='Request token'
+
+    link(rel='stylesheet', href='style.css')
+  body
+    #root
+    noscript You need to enable JavaScript to run this app.
+    script(type='text/javascript').
+      if (!window.process) window.process = { env: {} };
+      window.process.env = Object.assign(process.env, !{env})
+    script(src='index.js')

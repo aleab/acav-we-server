@@ -14,9 +14,10 @@
         "distclean": "npm run clean && rimraf ./package-lock.json \"./node_modules/!(rimraf|.bin)\"",
         "prebuild": "npm run clean && npm run lint",
         "build": "npm run _build:server && npm run _build:frontend",
+        "build:dev": "npm run _build:server && npm run _build:frontend -- --mode development",
         "_build:server": "tsc --build ./src/backend/tsconfig.json",
         "_build:frontend": "cross-env NODE_ENV=production webpack -p --mode production",
-        "post_build:frontend": "ncp ./src/index.html ./dist/static/index.html",
+        "post_build:frontend": "ncp ./src/index.pug ./dist/static/index.pug && ncp ./src/style.css ./dist/static/style.css",
         "postbuild": "ncp ./LICENSE.txt ./dist/LICENSE.txt",
         "start": "node ./dist/server.js",
         "lint": "eslint -c .eslintrc ./src/**/*.ts"
@@ -28,6 +29,7 @@
         "express": "^4.17.1",
         "open": "^7.0.3",
         "preact": "^10.3.4",
+        "pug": "^2.0.4",
         "qs": "^6.9.3"
     },
     "devDependencies": {
@@ -52,7 +54,6 @@
         "rimraf": "latest",
         "typescript": "^3.8.3",
         "webpack": "^4.42.1",
-        "webpack-cli": "^3.3.11",
-        "webpack-dotenv-plugin": "^2.1.0"
+        "webpack-cli": "^3.3.11"
     }
 }

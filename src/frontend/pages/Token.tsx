@@ -2,10 +2,9 @@ import { parse } from 'qs';
 import { Fragment, h, render } from 'preact';
 import { useCallback,  useEffect, useMemo, useState } from 'preact/hooks';
 
-const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
-const SPOTIFY_REDIRECT_URI = encodeURIComponent(process.env.SPOTIFY_REDIRECT_URI ?? '');
-const SPOTIFY_AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${SPOTIFY_CLIENT_ID}&response_type=code&redirect_uri=${SPOTIFY_REDIRECT_URI}`;
-const TOKEN_SERVER_URL = `http://localhost:${process.env.PORT}/api/acav`;
+function getSpotifyRedirectUri() { return encodeURIComponent(window.process.env.SPOTIFY_REDIRECT_URI ?? ''); }
+function getSpotifyAuthUrl() { return `https://accounts.spotify.com/authorize?client_id=${window.process.env.SPOTIFY_CLIENT_ID ?? ''}&response_type=code&redirect_uri=${getSpotifyRedirectUri()}`; }
+function getTokenServerUrl() { return `http://localhost:${window.process.env.PORT}/api/acav`; }
 
 // eslint-disable-next-line camelcase
 type SpotifyAuthError = { error: string; error_description: string; };
@@ -26,7 +25,7 @@ export default function Token() {
 
     useEffect(() => {
         if (code) {
-            fetch(`${TOKEN_SERVER_URL}/authorize_callback?code=${code}&redirect=${SPOTIFY_REDIRECT_URI}`, {
+            fetch(`${getTokenServerUrl()}/authorize_callback?code=${code}&redirect=${getSpotifyRedirectUri()}`, {
                 method: 'GET',
                 cache: 'no-cache',
             }).then(async res => {
@@ -76,7 +75,7 @@ export default function Token() {
       <Fragment>
         <div style={{ display: 'flex', flexFlow: 'column nowrap' }}>
           <div style={{ display: 'flex', flexFlow: 'row nowrap', flex: '1 1 0%' }}>
-            <a href={SPOTIFY_AUTH_URL} className="button" style={{ marginRight: '.5rem' }}>Request token</a>
+            <a href={getSpotifyAuthUrl()} className="button" style={{ marginRight: '.5rem' }}>Request token</a>
             <input type="text" value={token ?? ''} style={{ flex: '1 1 0%' }} disabled={!token} readOnly={true} />
           </div>
           {error ? <p style={{ color: 'red' }}>{error}</p> : null}

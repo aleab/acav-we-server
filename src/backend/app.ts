@@ -15,11 +15,24 @@ function checkEnv(...keys: string[]) {
         }
     });
     if (missing.length > 0) {
-        process.stderr.write(`The program requires the following environment varibles to run:\n  ${missing.join('\n  ')}\n`);
+        process.stderr.write(`The program requires the following environment varibles to run:\n  ${missing.join('\n  ')}\n\n`);
         process.exit(1);
     }
 }
 checkEnv('PORT', 'CRYPTO_KEY', 'SPOTIFY_CLIENT_ID', 'SPOTIFY_CLIENT_SECRET', 'SPOTIFY_REDIRECT_URI');
+
+if (process.env.CRYPTO_KEY === 'myverysecurekey') {
+    process.stderr.write('For security reasons, you must change the value of the CRYPTO_KEY environment variable!\n\n');
+    process.exit(1);
+}
+
+function getEnv(...keys: string[]) {
+    const env = {};
+    keys.forEach(key => {
+        env[key] = process.env[key];
+    });
+    return env;
+}
 
 // Configure middlewares
 const app = express();
@@ -39,7 +52,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/acav', acav);
-app.use('/', (_, res) => res.sendFile(path.join(__dirname, 'static', 'index.html')));
+app.use('/', (_, res) => res.render(path.join(__dirname, 'static', 'index.pug'), {
+    env: JSON.stringify(getEnv('PORT', 'SPOTIFY_CLIENT_ID', 'SPOTIFY_REDIRECT_URI')),
+}));
 
 app.use((_, res) => res.status(404).end());
 

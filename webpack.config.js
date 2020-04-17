@@ -1,12 +1,10 @@
 const path = require('path');
 
 const LicenseWebpackPlugin = require('license-webpack-plugin').LicenseWebpackPlugin;
-const DotenvPlugin = require('webpack-dotenv-plugin');
 
 const packageJson = require('./package.json');
 
 module.exports = () => {
-    const dotenvPlugin = new DotenvPlugin({ path: './.env', allowEmptyValues: false });
     const licensePlugin = new LicenseWebpackPlugin({
         outputFilename: 'LICENSES.3RD-PARTY.txt',
         perChunkOutput: false,
@@ -58,7 +56,8 @@ module.exports = () => {
                 },
             ],
         },
-        plugins: [dotenvPlugin, licensePlugin],
+        plugins: [licensePlugin],
+        devtool: false,
     };
     return config;
 };
