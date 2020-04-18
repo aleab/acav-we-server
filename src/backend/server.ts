@@ -3,6 +3,7 @@ import app from './app';
 
 const PORT = process.env.PORT;
 app.set('port', PORT);
+app.set('env', process.env.NODE_ENV ?? 'development');
 app.set('view engine', 'pug');
 
 const server = app.listen(PORT, () => {

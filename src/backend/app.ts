@@ -15,7 +15,7 @@ function checkEnv(...keys: string[]) {
         }
     });
     if (missing.length > 0) {
-        process.stderr.write(`The program requires the following environment varibles to run:\n  ${missing.join('\n  ')}\n\n`);
+        process.stderr.write(`The program requires the following environment variables to run:\n  ${missing.join('\n  ')}\n\n`);
         process.exit(1);
     }
 }
