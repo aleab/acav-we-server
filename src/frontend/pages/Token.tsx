@@ -2,8 +2,9 @@ import { parse } from 'qs';
 import { Fragment, h, render } from 'preact';
 import { useCallback,  useEffect, useMemo, useState } from 'preact/hooks';
 
+function getSpotifyScopes() { return encodeURIComponent(['user-read-currently-playing'].join(' ')); }
 function getSpotifyRedirectUri() { return encodeURIComponent(window.process.env.SPOTIFY_REDIRECT_URI ?? ''); }
-function getSpotifyAuthUrl() { return `https://accounts.spotify.com/authorize?client_id=${window.process.env.SPOTIFY_CLIENT_ID ?? ''}&response_type=code&redirect_uri=${getSpotifyRedirectUri()}`; }
+function getSpotifyAuthUrl() { return `https://accounts.spotify.com/authorize?client_id=${window.process.env.SPOTIFY_CLIENT_ID ?? ''}&response_type=code&scope=${getSpotifyScopes()}&redirect_uri=${getSpotifyRedirectUri()}`; }
 function getTokenServerUrl() { return `http://localhost:${window.process.env.PORT}/api/acav`; }
 
 // eslint-disable-next-line camelcase
