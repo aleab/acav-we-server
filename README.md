@@ -22,6 +22,7 @@ docker run --name acav-we -p 4000:4000/tcp \
     -e CRYPTO_KEY=some_random_crypto_key \
     -e SPOTIFY_CLIENT_ID=your_spotify_client_id \
     -e SPOTIFY_CLIENT_SECRET=your_spotify_client_secret \
+    -e SPOTIFY_REDIRECT_URI=your_redirect_uri \
     aleab/acav-we-server
 ```
 
@@ -38,5 +39,6 @@ acav-we:
         CRYPTO_KEY: "some_random_crypto_key"
         SPOTIFY_CLIENT_ID: "your_spotify_client_id"
         SPOTIFY_CLIENT_SECRET: "your_spotify_client_secret"
+        SPOTIFY_REDIRECT_URI: "your_redirect_uri"
     restart: unless-stopped
 ```
