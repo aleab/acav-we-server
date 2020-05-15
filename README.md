@@ -12,7 +12,8 @@
 3. Edit the `.env` file and add your Spotify app's information: Client ID, Client Secret and Redirect URI.
 4. Build and run the project: `npm run build && npm run start -- --open`.
 5. A new browser window/tab should have opened; use that page to request a new token and check if the local server is working correctly.
-
+6. Set the _**Spotify > Backend URL**_ property in Wallpaper Engine to e.g. `http://localhost:4000/api/acav`.
+ 
 ## Docker
 You can use this repository to build a Docker image and self-host this server.
 
