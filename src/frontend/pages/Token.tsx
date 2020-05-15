@@ -5,16 +5,16 @@ import { useCallback,  useEffect, useMemo, useState } from 'preact/hooks';
 function getSpotifyScopes() { return encodeURIComponent(['user-read-currently-playing'].join(' ')); }
 function getSpotifyRedirectUri() { return encodeURIComponent(window.process.env.SPOTIFY_REDIRECT_URI ?? ''); }
 function getSpotifyAuthUrl() { return `https://accounts.spotify.com/authorize?client_id=${window.process.env.SPOTIFY_CLIENT_ID ?? ''}&response_type=code&scope=${getSpotifyScopes()}&redirect_uri=${getSpotifyRedirectUri()}`; }
-function getTokenServerUrl() { return `http://localhost:${window.process.env.PORT}/api/acav`; }
+function getTokenServerUrl() { return `/api/acav`; }
 
 // eslint-disable-next-line camelcase
 type SpotifyAuthError = { error: string; error_description: string; };
 
 export default function Token() {
     const _search = window.location.search;
-    const queryParams: { code: string } | null = useMemo(() => (_search ? parse(_search, { ignoreQueryPrefix: true }) : null), [_search]);
+    const queryParams: any | null = useMemo(() => (_search ? parse(_search, { ignoreQueryPrefix: true }) : null), [_search]);
 
-    const code = queryParams?.code;
+    const code: string = queryParams?.code;
 
     const [ token, setToken ] = useState<string | undefined>(undefined);
     const [ error, setError ] = useState<string | undefined>(undefined);
