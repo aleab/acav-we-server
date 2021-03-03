@@ -1,7 +1,6 @@
 dist/
 node_modules/
 .npm
-package-lock.json
 
 # Logs
 logs

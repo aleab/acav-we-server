@@ -4,7 +4,9 @@ const LicenseWebpackPlugin = require('license-webpack-plugin').LicenseWebpackPlu
 
 const packageJson = require('./package.json');
 
-module.exports = () => {
+module.exports = (env, argv) => {
+    const mode = argv.nodeEnv || argv.mode || 'production';
+
     const licensePlugin = new LicenseWebpackPlugin({
         outputFilename: 'LICENSES.3RD-PARTY.txt',
         perChunkOutput: false,
@@ -32,7 +34,7 @@ module.exports = () => {
 
     /** @type {import('webpack').Configuration} */
     const config = {
-        mode: 'production',
+        mode: mode,
         entry: { index: './src/frontend/index.tsx' },
         output: {
             path: path.resolve(__dirname, 'dist', 'static'),
@@ -59,5 +61,6 @@ module.exports = () => {
         plugins: [licensePlugin],
         devtool: false,
     };
+
     return config;
 };
