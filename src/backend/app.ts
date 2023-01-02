@@ -39,10 +39,11 @@ const app = express();
 
 app.use((req, res, next) => {
     const end = res.end;
-    res.end = function _end(...args) {
+    res.end = function _end(...args: any[]) {
         res.end = end;
         res.end.apply(this, args);
         console.log(`${req.socket.remoteAddress.padEnd(15, ' ')} ${req.method.padEnd(4, ' ')} ${req.originalUrl} - ${res.statusCode}`);
+        return <any>res.end;
     };
     next();
 });
